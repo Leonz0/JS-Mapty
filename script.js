@@ -3,7 +3,6 @@
 class Workout {
   date = new Date();
   id = (Date.now() + '').slice(-10);
-  clicks = 0;
 
   constructor(coords, distance, duration) {
     this.coords = coords; // [lat, lng]
@@ -20,9 +19,6 @@ class Workout {
       months[this.date.getMonth()]
     } ${this.date.getDate()}
     `;
-  }
-  click() {
-    this.clicks++;
   }
 }
 
@@ -60,9 +56,6 @@ class Cycling extends Workout {
   }
 }
 
-// const run1 = new Running([39, -12], 5.2, 24, 178);
-// const cycling1 = new cycling1([39, -12], 27, 95, 523);
-
 //////////////////////////////
 // APPLICATION ARCHITECTURE //
 //////////////////////////////
@@ -74,8 +67,6 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
-// const workoutDetails = document.querySelector('.workout__title');
-// console.log(workoutDetails);
 
 class App {
   #map;
@@ -100,18 +91,13 @@ class App {
   }
 
   _getParToEdit() {
-    //const workoutDetails = document.getElementsByClassName('workout__details');
     let workoutDetails = document.querySelectorAll('.workout__details');
-    //console.log(workoutDetails);
     for (let i = 0; i < workoutDetails.length; i++) {
       workoutDetails[i].addEventListener('click', function () {
         console.log(workoutDetails[i].parentNode);
         console.log(workoutDetails[i]);
       });
     }
-    // const workout = this.#workouts.find(
-    //   work => work.id === workoutEl.dataset.id
-    // );
   }
 
   _getPosition() {
@@ -145,13 +131,6 @@ class App {
       this._renderWorkoutMarker(work);
     });
 
-    // const workoutDetails = document.getElementsByClassName('workout__details');
-    // console.log(workoutDetails);
-    // for (let i = 0; i < workoutDetails.length; i++) {
-    //   workoutDetails[i].addEventListener('click', function () {
-    //     console.log(workoutDetails[i]);
-    //   });
-    // }
     this._getParToEdit();
   }
 
@@ -322,9 +301,6 @@ class App {
         duration: 1,
       },
     });
-
-    //// using the public interface
-    //workout.click();
   }
 
   _setLocalStorage() {
