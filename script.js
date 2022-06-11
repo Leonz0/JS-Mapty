@@ -91,11 +91,17 @@ class App {
   }
 
   _getParToEdit() {
-    let workoutDetails = document.querySelectorAll('.workout__details');
+    let workoutDetails = document.getElementsByClassName('workout__details');
     for (let i = 0; i < workoutDetails.length; i++) {
-      workoutDetails[i].addEventListener('click', function () {
-        console.log(workoutDetails[i].parentNode);
-        console.log(workoutDetails[i]);
+      workoutDetails[i].addEventListener('click', function (e) {
+        let val = workoutDetails[i].getElementsByClassName('workout__value');
+        let inVal = val.textContent || val.innerText;
+        console.log(localStorage.getItem('workouts'));
+        //_findWorkoutById();
+        console.log(inVal);
+        //console.log(workoutDetails[i].parentNode);
+        //console.log(workoutDetails[i]);
+        return true;
       });
     }
   }
@@ -279,10 +285,22 @@ class App {
     </div>
   </li>`;
 
+    this._getParToEdit();
+
     form.insertAdjacentHTML('afterend', html);
   }
 
   _editWorkout() {}
+
+  _findWorkoutById(e) {
+    const workoutEl = e.target.closest('.workout');
+
+    if (!workoutEl) return;
+
+    const workout = this.#workouts.find(
+      work => work.id === workoutEl.dataset.id
+    );
+  }
 
   _moveToPopup(e) {
     if (!this.#map) return;
