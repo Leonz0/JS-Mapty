@@ -95,10 +95,11 @@ class App {
     for (let i = 0; i < workoutDetails.length; i++) {
       workoutDetails[i].addEventListener('click', function (e) {
         let val = workoutDetails[i].getElementsByClassName('workout__value');
-        let inVal = val.textContent || val.innerText;
+        let inVal = val[0].textContent;
         console.log(localStorage.getItem('workouts'));
         //_findWorkoutById();
         console.log(inVal);
+        console.log(val);
         //console.log(workoutDetails[i].parentNode);
         //console.log(workoutDetails[i]);
         return true;
