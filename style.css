@@ -87,7 +87,7 @@ a:visited {
 .workout__title {
   font-size: 1.7rem;
   font-weight: 600;
-  grid-column: 1 / -1;
+  grid-column: 1 / -2;
 }
 
 .workout__details {
@@ -143,6 +143,10 @@ a:visited {
 
 .form__row--hidden {
   display: none;
+}
+
+.edit__btn.hidden {
+  visibility: hidden;
 }
 
 .form__label {
